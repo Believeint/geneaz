@@ -2,21 +2,9 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword  } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-auth.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-analytics.js";
+import { firebaseConfig } from "../../../firebase-config.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyB26kv2VCXe1FzxMVpu-65f78t4P0JILMU",
-  authDomain: "geneaz.firebaseapp.com",
-  databaseURL: "https://geneaz-default-rtdb.firebaseio.com",
-  projectId: "geneaz",
-  storageBucket: "geneaz.appspot.com",
-  messagingSenderId: "1090047398827",
-  appId: "1:1090047398827:web:87cb7016a55cf50c25b8ee",
-  measurementId: "G-1JNWN0BQYE"
-};
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

@@ -67,3 +67,4 @@ node_modules/
 
 # vscode config
 .vscode
+firebase-config.js

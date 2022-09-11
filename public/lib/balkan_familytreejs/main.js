@@ -4,17 +4,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase
 import { getDatabase, ref, get, child, update, remove } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-database.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-auth.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-analytics.js";
-
-const firebaseConfig = {
-    apiKey: "AIzaSyB26kv2VCXe1FzxMVpu-65f78t4P0JILMU",
-    authDomain: "geneaz.firebaseapp.com",
-    databaseURL: "https://geneaz-default-rtdb.firebaseio.com",
-    projectId: "geneaz",
-    storageBucket: "geneaz.appspot.com",
-    messagingSenderId: "1090047398827",
-    appId: "1:1090047398827:web:87cb7016a55cf50c25b8ee",
-    measurementId: "G-1JNWN0BQYE"
-};
+import { firebaseConfig } from "../../../firebase-config.js";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -35,21 +25,16 @@ FamilyTree.RES.IT_IS_LONELY_HERE_LINK = 'Carregando...';
 
 var data = [
 
-    { id: 1, mid: 12, fid: 13, pids: [2], fn: "Tania", name: "Tania Maria Carvalho Souza", gender: "female", ldata: "01/01/1965", ImgUrl: 'https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' },
-    { id: 2, mid: 14, fid: 15, pids: [1], fn: "Claudionor", name: "Claudionor Alcantara dos Santos", gender: "male" },
-    { id: 3, mid: 1, fid: 2, fn: "Elias", name: "Elias Carvalho dos Santos", gender: "male" },
-    { id: 4, mid: 1, fid: 2, fn: "Pedro", name: "Pedro Henrique Carvalho dos Santos", gender: "male" },
-    { id: 5, mid: 1, fid: 2, fn: "Davi", name: "Davi Carvalho dos Santos", gender: "male" },
-    { id: 6, pids: [7], mid: 1, fid: 2, fn: "Katia", name: "Katia Carvalho dos Santos", gender: "female" },
-    { id: 7, pids: [6], fn: "Alexandre", name: "Alexandre Brito", gender: "male" },
-    { id: 8, mid: 6, fid: 7, fn: "Arthur", name: "Arthur Carvalho de Brito", gender: "male" },
-    { id: 9, mid: 6, fid: 7, fn: "Miguel", name: "Miguel Carvalho de Brito", gender: "male" },
-    { id: 10, mid: 6, fid: 7, fn: "Samuel", name: "Samuel Carvalho de Brito", gender: "male" },
-    { id: 11, mid: 6, fid: 7, fn: "Laura", name: "Laura Carvalho de Brito", gender: "female" },
-    { id: 12, pids: [13], fn: "Maria", name: "Maria Filgueira Carvalho", gender: "female" },
-    { id: 13, pids: [12], fn: "Cirilo", name: "Cirilo Rodrigues de Souza", gender: "male" },
-    { id: 14, pids: [15], fn: "Rosalina", name: "Rosalina Vitorina dos Santos", gender: "male", divorced: "15" },
-    { id: 15, pids: [14], fn: "Pedro Alcantara", name: "Pedro Alcantara dos Santos", gender: "male", divorced: "14" },
+    { id: 1, pids: [2], name: "Maria", fullName: "Maria Filgueira de Carvalho", gender: "female", dob: "1928-02-16" },
+    { id: 2, pids: [1], name: "Cirilo", fullName: "Cirilo Rofrigues de Souza", gender: "male", dob: "1935-01-20" },
+    { id: 3, pids: [4], name: "Rosalina", fullName: "Rosalina Vitorina dos Santos", gender: "female", dob: "1927-01-27" },
+    { id: 4, pids: [3], name: "Pedro Alcantara", fullName: "Pedro Alcantara dos Santos", gender: "male", urlImg: "https://scontent.fgyn11-1.fna.fbcdn.net/v/t1.18169-9/21077795_1819194595033070_5921570424373292097_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=730e14&_nc_eui2=AeH6JSKy3LVlRjNCNsJ54Th3lSqEbXAQv_CVKoRtcBC_8L3cs3vDYfNm5vOMCn2NaGzVcj_a2Qa_5A6u7OxNxaAA&_nc_ohc=e9b63-6reJQAX_UyYg-&_nc_ht=scontent.fgyn11-1.fna&oh=00_AT8-imraMwJ6A_6UjSYQA-c3u82Fe964eUCWbdE56C8_dw&oe=634493D1" },
+    { id: 5, pids: [6], mid: 1, fid: 2, name: "Tania", fullName: "Tania Maria Carvalho Souza", gender: "female", dob: "1965-10-31", urlImg: "https://scontent.fgyn11-1.fna.fbcdn.net/v/t1.6435-9/156626742_1664746247067446_7589426849399954369_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeGcFtVJsxwC5gvc1eR1HKS7MMbGJghPsyEwxsYmCE-zIYZSJq1fj043ZO-cTyzjC8ICkLvuIkCQRydfE2I9PDdk&_nc_ohc=PcraODeQQ3QAX-8OZbq&_nc_ht=scontent.fgyn11-1.fna&oh=00_AT9W84QQ7KXmliSsWkMPjMNv08GaKGlyjNhzWVYrJfUodw&oe=63422624" },
+    { id: 6, pids: [5], mid: 3, fid: 4, name: "Claudionor", fullName: "Claudionor Alcantara dos Santos", gender: "male", dob: "1955-08-22", urlImg: "https://scontent.fgyn11-1.fna.fbcdn.net/v/t1.6435-9/99290234_2787447424711403_5516121361195466752_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=8bfeb9&_nc_eui2=AeGlZMZMvryL7w9HQEaGsxh9kAegzOCM4ueQB6DM4Izi53lc0T7zaOZMBhIi-MueQktD58J9RrXCoz8SxpHglUku&_nc_ohc=PMmwKEqlIooAX-mJuaA&_nc_ht=scontent.fgyn11-1.fna&oh=00_AT8MXBEZ138Jw0PfDqmOZMuTHDLj9TPoWiDnEpMmeSB_OA&oe=6342C3A9" },
+    { id: 7, mid: 5, fid: 6, name: "Katia", fullName: "Katia Carvalho dos Santos", gender: "female", dob: "1993-06-24", urlImg: "https://scontent.fgyn11-1.fna.fbcdn.net/v/t39.30808-6/281472903_4862727393850052_4617397277112384084_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeHdbZCgJ07VuDxOcOdWV-pSIQsRp_ml6cchCxGn-aXpx0ke_peuqVYGdiDDDyf5xlUcQJLJOUoTRVDDCJfQzoiX&_nc_ohc=GQuS5CBqdTcAX_3gouF&_nc_ht=scontent.fgyn11-1.fna&oh=00_AT9HXok8Sw9rtasfBp1NfmZ_VQDTK5itVh0757HDj3II4w&oe=632350E7" },
+    { id: 8, mid: 5, fid: 6, name: "Elias", fullName: "Elias Carvalho dos Santos", gender: "male", dob: "1996-06-30", urlImg: "https://scontent.fgyn11-1.fna.fbcdn.net/v/t39.30808-6/246475595_4447272505388868_7068237518027055519_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=174925&_nc_eui2=AeHj7-e2hyT3nBsPDLmZMzRnaCNsYLnHDgNoI2xguccOA1Xa3Ml3zpYpRPC9fx-2YRaDosbh5DbjPAF1bZN92T3l&_nc_ohc=qzygUfrNVBQAX-heqa7&_nc_ht=scontent.fgyn11-1.fna&oh=00_AT-IrztCWMpb5HprZtCp8n01FdgWXfDsU1h_0Q6oqVI_QQ&oe=63225EDB" }, 
+    { id: 9, mid: 5, fid: 6, name: "Pedro", fullName: "Pedro Henrique Carvalho dos Santos", gender: "male", dob: "1998-11-14", urlImg: "https://scontent.fgyn11-1.fna.fbcdn.net/v/t39.30808-6/296275241_580709160259885_8592377385201344011_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=174925&_nc_eui2=AeG25TChKzjJudLEJmWT4ZNSr1zapd8u7C2vXNql3y7sLebn7NJ9wbnKj_6zivGeHhIyeV6Ggeb42zuJBTyM9q0W&_nc_ohc=2IVJRrGWBeIAX-v0U3U&_nc_ht=scontent.fgyn11-1.fna&oh=00_AT98k-pMipCmUE7kxhFSe-jv_qrmxbNq4IlMd16D0es2VA&oe=6322AB21" }, 
+    { id: 10, mid: 5, fid: 6, name: "Davi", fullName: "Davi Carvalho dos Santos", gender: "male", dob: "2000-11-15", urlImg: "https://scontent.fgyn11-1.fna.fbcdn.net/v/t31.18172-8/13323541_929618710500203_6636405263440424376_o.jpg?_nc_cat=111&ccb=1-7&_nc_sid=174925&_nc_eui2=AeEykLtOzH-vQx65rnrK1UBLmsGeq0IqkhCawZ6rQiqSEP4mbvCNQnnF6BVbIRWSrh_0siPB3wgaRZ1RBsew8K1T&_nc_ohc=tFVk9KG-PWIAX9woiqP&_nc_ht=scontent.fgyn11-1.fna&oh=00_AT_FCnF0aMbhrt_1ikRgwv5C-g8NcfFGONnh1XUlun3c5A&oe=63443234" }, 
 ];
 
 var family = new FamilyTree(document.getElementById("tree"), {
@@ -85,9 +70,9 @@ var family = new FamilyTree(document.getElementById("tree"), {
         }
     },
     nodeBinding: {
-        field_0: "fn",
-        field_1: "ldata",
-        img_0: "ImgUrl",
+        field_0: "name",
+        field_1: "dob",
+        img_0: "urlImg"
     },
     // nodeMenu: {
     //     details: {text: "Detalhes"},
@@ -118,17 +103,16 @@ var family = new FamilyTree(document.getElementById("tree"), {
         cancelBtn: "Cancelar",
         saveAndCloseBtn: "Salvar",
         generateElementsFromFields: false,
+        photoBinding: "urlImg",
         elements: [
-            {type: 'textbox', label: "Nome", binding: 'fn'},
-            {type: 'textbox', label: "Nome Completo", binding: 'name'},
+            {type: 'textbox', label: "Nome", binding: 'name'},
+            {type: 'textbox', label: "Nome Completo", binding: 'fullName'},
             {type: 'select', options:[
                 {value: 'male', text: "Masculino"},
                 {value: 'female', text: "Feminino"},
             ], label: "Gênero", binding: 'gender'},
-            {type: 'date', label: "Data Nascimento", binding: 'ldata'},
-            {type: 'textbox', label: "Url Imagem", binding: 'ImgUrl'},
-            {type: 'textbox', label: 'Teste', binding: 'teste'},
-            {type: 'textbox', label: 'dvcd', binding: 'divorced'}
+            {type: 'date', label: "Data Nascimento", binding: 'dob'},
+            {type: 'textbox', label: "Url Imagem", binding: 'urlImg'}
         ],
         buttons: {
             edit: {
@@ -157,7 +141,8 @@ var family = new FamilyTree(document.getElementById("tree"), {
 get(child(dbRef, 'geneazData')).then(async (snapshot) => {
     const auth = getAuth(app);
     auth.onAuthStateChanged((user) => {
-        console.log(user)
+        //console.log(user)
+        //family.load(data)
         if(user) {
             if(snapshot.exists()) {
                 dataGeneaz = JSON.parse(snapshot.val());
@@ -198,6 +183,17 @@ get(child(dbRef, 'geneazData')).then(async (snapshot) => {
 //     }
 
 // });
+
+// family.on('field', function(sender, args) {
+//     var name = args.data['dob'];
+//     if(args.data['dob']) {
+//         let dtUs = args.data['dob'];
+//         let dtBr = dtUs.split('-').reverse().join('/');
+//         console.log(sender);
+//     }
+
+// });
+
 
 family.on('import', (e, dados) => {
     let dataRef = child(dbRef ,'geneazData', null);
